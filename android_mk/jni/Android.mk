@@ -6,7 +6,8 @@ LOCAL_C_INCLUDES := \
     ../source/
 LOCAL_SRC_FILES:= \
     ../../apps/synthmark.cpp \
-    ../../source/tools/HostTools.cpp
+    ../../source/tools/HostTools.cpp \
+    ../../source/tools/TraceMarker.cpp
 LOCAL_CFLAGS += -g -std=c++11 -Ofast
 #LOCAL_SHARED_LIBRARIES := libcutils libutils
 LOCAL_MODULE := synthmark
