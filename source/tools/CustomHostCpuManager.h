@@ -22,6 +22,7 @@
 
 #include "HostTools.h"
 #include "scheddl.h"
+#include "TraceMarker.h"
 
 
 class CustomHostCpuManager : public HostCpuManagerBase
@@ -149,6 +150,10 @@ public:
                 printf("]");
                 printf("\n");
                 fflush(stdout);
+
+                traceMarker() << "synthmark_load:"
+                              << " workUnit=" << currentWorkUnits
+                              << std::endl;
             }
 
             expectedRuntime_ns = mPeriod_ns * bandwidth;
@@ -312,6 +317,12 @@ private:
             duration = durationTimer;
         }
 
+        traceMarker() << "synthmark_runtime_w:"
+                      << " workUnit=" << getCurrentWorkUnits()
+                      << " runtimeDL=" << durationDL
+                      << " runtimeTimer=" << durationTimer
+                      << std::endl;
+
         mCpuTiming.reportApplicationRuntime(duration, getCurrentWorkUnits());
     }
 
@@ -392,6 +403,11 @@ private:
                 runtime = linear_params.first
                         + linear_params.second * workUnits;
             }
+
+            traceMarker() << "synthmark_runtime_r:"
+                          << " runtime=" << runtime
+                          << std::endl;
+
             return runtime;
         }
 
