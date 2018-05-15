@@ -2,30 +2,31 @@
 #define SYNTHMARK_SCHEDDL_H
 
 #include <linux/sched.h>
+#include <stdint.h>
 #include <sys/syscall.h>
 #include <unistd.h>
 
 
-const __u64 SCHED_GETATTR_FLAGS_DL_ABSOLUTE = 0x01;
+const uint64_t SCHED_GETATTR_FLAGS_DL_ABSOLUTE = 0x01;
 
 struct sched_attr {
-    __u32 size;
+    uint32_t size;
 
-    __u32 sched_policy;
+    uint32_t sched_policy;
 
     // For future implementation. By default should be set to 0.
-    __u64 sched_flags;
+    uint64_t sched_flags;
 
     // SCHED_OTHER niceness
-    __s32 sched_nice;
+    int32_t sched_nice;
 
     // SCHED_RT priority
-    __u32 sched_priority;
+    uint32_t sched_priority;
 
     // SCHED_DEADLINE parameters, in nsec
-    __u64 sched_runtime;
-    __u64 sched_deadline;
-    __u64 sched_period;
+    uint64_t sched_runtime;
+    uint64_t sched_deadline;
+    uint64_t sched_period;
 };
 
 inline int sched_setattr(pid_t pid,
