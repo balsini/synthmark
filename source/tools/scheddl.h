@@ -7,6 +7,10 @@
 #include <unistd.h>
 
 
+#ifndef SCHED_DEADLINE
+#define SCHED_DEADLINE 6
+#endif
+
 const uint64_t SCHED_GETATTR_FLAGS_DL_ABSOLUTE = 0x01;
 
 struct sched_attr {
