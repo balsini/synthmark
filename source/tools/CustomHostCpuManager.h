@@ -18,6 +18,7 @@
 #define CUSTOM_HOST_CPU_MANAGER_H
 
 #include <cstdint>
+#include <iostream>
 #include <map>
 
 #include "HostTools.h"
@@ -142,7 +143,7 @@ public:
                        currentWorkUnits, bandwidth);
                 printf("\t[");
                 int width = 30;
-                unsigned int i;
+                int i;
                 for (i=0; i<bandwidth * width; ++i)
                     printf("#");
                 for (; i<width; ++i)
@@ -203,9 +204,9 @@ public:
             if (ret == -1) {
                 perror("Error setting SCHED_DEADLINE");
                 fflush(stderr);
-                printf("- runtime:\t%llu\n", sa.sched_runtime);
-                printf("- deadline:\t%llu\n", sa.sched_deadline);
-                printf("- period:\t%llu\n", sa.sched_period);
+                std::cout << "- runtime:\t" << sa.sched_runtime << std::endl;
+                std::cout << "- deadline:\t" << sa.sched_deadline << std::endl;
+                std::cout << "- period:\t" << sa.sched_period << std::endl;
                 exit(-1);
             } else {
                 /*
