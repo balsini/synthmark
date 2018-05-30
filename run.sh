@@ -47,11 +47,11 @@ cd /data/
 
 ./synthmark -h
 sleep 5
-./synthmark -s60 -b64 -tl -n5 -N130 -Rr
+./synthmark -s60 -b64 -tl -n5 -N130 -mr
 sleep 5
-./synthmark -s60 -b64 -tl -n5 -N130 -Rl
+./synthmark -s60 -b64 -tl -n5 -N130 -ml
 sleep 5
-./synthmark -s60 -b64 -tl -n5 -N130 -Rs
+./synthmark -s60 -b64 -tl -n5 -N130 -ms
 '
 # JitterMark
 #adb shell "cd /data/; ./synthmark -tj -n80"
