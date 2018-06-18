@@ -117,7 +117,7 @@ public:
 
     virtual void onBeginMeasurement() override {
         mPreviousUnderrunCount = 0;
-        mAudioSink->setBufferSizeInFrames(mFramesPerBurst);
+        mAudioSink->setBufferSizeInFrames(mFramesPerBurst * mInitialBursts);
         mLogTool->log("---- Measure latency ---- #voices = %d\n", getNumVoices());
 
         setupJitterRecording();
@@ -213,8 +213,12 @@ public:
         }
     }
 
-private:
+    void setInitialBursts(int32_t bursts) {
+    	mInitialBursts = bursts;
+    }
 
+private:
+    int32_t           mInitialBursts = 1;
     int32_t           mPreviousUnderrunCount = 0;
     int32_t           mNumVoicesHigh = 0;
     VoicesMode        mVoicesMode = VOICES_SWITCH;
