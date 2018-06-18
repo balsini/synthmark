@@ -30,7 +30,7 @@
 #include "tools/TimingAnalyzer.h"
 
 
-#define NOTES_PER_STEP   10
+#define NOTES_PER_STEP   6
 
 enum VoicesMode {
     VOICES_UNDEFINED,

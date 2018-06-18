@@ -28,6 +28,8 @@
 
 #define SYNTHMARK_USE_CUSTOM_CPU_MANAGER
 
+#include "TraceMarker.h"
+
 #if defined(__APPLE__)
 #include <mach/mach_time.h>
 #endif
@@ -297,6 +299,9 @@ public:
 //            printf("workUnits = %d, requestCpuSpeedMHz(%d, %d)\n",
 //                   currentWorkUnits, cpuIndex, (int32_t) requiredClockSpeed);
             requestCpuSpeedMHz(cpuIndex, (int32_t) requiredClockSpeed);
+            traceMarker() << "synthmark_load:"
+                              << " workUnit=" << currentWorkUnits
+                              << std::endl;
         }
         HostCpuManagerBase::setApplicationLoad(currentWorkUnits, maxWorkUnits);
     }

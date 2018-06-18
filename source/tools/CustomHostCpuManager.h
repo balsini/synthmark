@@ -129,8 +129,8 @@ public:
                 bandwidth = static_cast<double>(expectedRuntime_ns) / mPeriod_ns;
 
             /* Add some offset to the computed bandwidth */
-            bandwidth *= 1.1;
-            bandwidth += 0.05;
+            bandwidth *= 1.005; //1.005;
+            bandwidth += 0.041; // 0.042
 
             /* Bound the bandwidth to the limit set by the Kernel */
             if (bandwidth > mMaxBW)
@@ -139,7 +139,7 @@ public:
             if (currentWorkUnits != getCurrentWorkUnits() ||
                     maxWorkUnits != getMaxWorkUnits()) {
                 /* Print the current status only when the workUnits changed */
-                printf("workUnits=%d\trequestDLBandwidth=%f",
+                /*printf("workUnits=%d\trequestDLBandwidth=%f",
                        currentWorkUnits, bandwidth);
                 printf("\t[");
                 int width = 30;
@@ -150,7 +150,7 @@ public:
                     printf("_");
                 printf("]");
                 printf("\n");
-                fflush(stdout);
+                fflush(stdout);*/
 
                 traceMarker() << "synthmark_load:"
                               << " workUnit=" << currentWorkUnits
