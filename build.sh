@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "----) Building synthmark..."
-NDK=/work/android/Sdk/ndk-bundle/ndk-build
+NDK=~/Android/Sdk/ndk-bundle/ndk-build
 APP=$(pwd)/android_mk
 
 source ./goRoot.sh

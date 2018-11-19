@@ -46,12 +46,12 @@ echo /dev/cpuset/dl/tasks: $(cat /dev/cpuset/dl/tasks)
 cd /data/
 
 ./synthmark -h
-sleep 5
-./synthmark -s60 -b64 -tl -n5 -N130 -Rr
-sleep 5
-./synthmark -s60 -b64 -tl -n5 -N130 -Rl
-sleep 5
-./synthmark -s60 -b64 -tl -n5 -N130 -Rs
+sleep 1
+./synthmark -s20 -b64 -tl -n5 -N80 -mr -w1
+#sleep 5
+#./synthmark -s60 -b64 -tl -n5 -N130 -Rl
+#sleep 5
+#./synthmark -s60 -b64 -tl -n5 -N130 -Rs
 '
 # JitterMark
 #adb shell "cd /data/; ./synthmark -tj -n80"
